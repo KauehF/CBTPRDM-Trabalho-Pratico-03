@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TP03_Rastreamento.Views.BuscaPage"
+    Title="Rastreamento"
+    BackgroundColor="{StaticResource CorFundo}">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <!-- Cabeçalho -->
+
+            <VerticalStackLayout Spacing="8">
+
+                <Label
+                    Text="TRACKING"
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource CorPrimaria}"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    Text="Onde está meu pedido?"
+                    FontSize="27"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource CorTexto}"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    Text="Acompanhe cada etapa da sua entrega."
+                    FontSize="14"
+                    TextColor="{StaticResource CorTextoSecundario}"
+                    HorizontalTextAlignment="Center" />
+
+            </VerticalStackLayout>
+
+            <!-- Área de consulta -->
+
+            <Border
+                BackgroundColor="{StaticResource CorCartao}"
+                Stroke="{StaticResource CorBorda}"
+                StrokeThickness="1"
+                Padding="20">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Label
+                        Text="Código de rastreamento"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource CorTexto}" />
+
+                    <Entry
+                        Placeholder="Ex: BR123456"
+                        Text="{Binding CodigoRastreamento}"
+                        MaxLength="20"
+                        BackgroundColor="{StaticResource CorFundo}"
+                        TextColor="{StaticResource CorTexto}"
+                        PlaceholderColor="#999999"
+                        ClearButtonVisibility="WhileEditing" />
+
+                    <Button
+                        Text="RASTREAR PEDIDO"
+                        Command="{Binding BuscarCommand}"
+                        BackgroundColor="{StaticResource CorPrimaria}"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="52" />
+
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Color="{StaticResource CorPrimaria}" />
+
+                    <Label
+                        Text="{Binding MensagemErro}"
+                        TextColor="{StaticResource CorErro}"
+                        FontSize="13"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Rodapé -->
+
+            <VerticalStackLayout Spacing="5">
+
+                <Label
+                    Text="Seu pedido, acompanhado em cada etapa."
+                    FontSize="13"
+                    TextColor="{StaticResource CorTextoSecundario}"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    Text="RASTREAMENTO DE ENCOMENDAS"
+                    FontSize="11"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource CorPrimaria}"
+                    HorizontalTextAlignment="Center" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

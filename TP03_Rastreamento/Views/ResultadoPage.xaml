@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TP03_Rastreamento.Views.ResultadoPage"
+    Title="Detalhes do pedido"
+    BackgroundColor="{StaticResource CorFundo}">
+
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="18">
+
+            <!-- Cabeçalho -->
+
+            <VerticalStackLayout Spacing="5">
+
+                <Label
+                    Text="Acompanhe sua entrega"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource CorTexto}" />
+
+                <Label
+                    Text="Confira as informações e movimentações do seu pacote."
+                    FontSize="13"
+                    TextColor="{StaticResource CorTextoSecundario}" />
+
+            </VerticalStackLayout>
+
+            <!-- Status -->
+
+            <Border
+                BackgroundColor="{StaticResource CorPrimaria}"
+                StrokeThickness="0"
+                Padding="20">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="STATUS DO PEDIDO"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        TextColor="#FFFFFF" />
+
+                    <Label
+                        Text="{Binding Pacote.Status}"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="{Binding Pacote.CodigoRastreamento}"
+                        FontSize="14"
+                        TextColor="#FFFFFF" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Localização -->
+
+            <Border
+                BackgroundColor="{StaticResource CorCartao}"
+                Stroke="{StaticResource CorBorda}"
+                StrokeThickness="1"
+                Padding="18">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Localização atual"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource CorTexto}" />
+
+                    <Label
+                        Text="{Binding Pacote.LocalizacaoAtual}"
+                        FontSize="15"
+                        TextColor="{StaticResource CorTextoSecundario}" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Datas -->
+
+            <Border
+                BackgroundColor="{StaticResource CorCartao}"
+                Stroke="{StaticResource CorBorda}"
+                StrokeThickness="1"
+                Padding="18">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label
+                        Text="Informações da entrega"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource CorTexto}" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+
+                        <VerticalStackLayout Grid.Column="0" Spacing="5">
+
+                            <Label
+                                Text="Data de envio"
+                                FontSize="12"
+                                TextColor="{StaticResource CorTextoSecundario}" />
+
+                            <Label
+                                Text="{Binding Pacote.DataEnvio, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource CorTexto}" />
+
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+
+                            <Label
+                                Text="Previsão de entrega"
+                                FontSize="12"
+                                TextColor="{StaticResource CorTextoSecundario}" />
+
+                            <Label
+                                Text="{Binding Pacote.DataPrevistaEntrega, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource CorPrimaria}" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Histórico -->
+
+            <VerticalStackLayout Spacing="12">
+
+                <Label
+                    Text="Histórico de movimentações"
+                    FontSize="19"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource CorTexto}" />
+
+                <CollectionView
+                    ItemsSource="{Binding Pacote.HistoricoEventos}"
+                    SelectionMode="None"
+                    HeightRequest="350">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                                BackgroundColor="{StaticResource CorCartao}"
+                                Stroke="{StaticResource CorBorda}"
+                                StrokeThickness="1"
+                                Padding="15"
+                                Margin="0,0,0,10">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="8">
+
+                                    <Label
+                                        Text="{Binding DataHora, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"
+                                        FontSize="13"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource CorPrimaria}" />
+
+                                    <Label
+                                        Text="{Binding Descricao}"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource CorTexto}" />
+
+                                    <Label
+                                        Text="{Binding Local}"
+                                        FontSize="13"
+                                        TextColor="{StaticResource CorTextoSecundario}" />
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </VerticalStackLayout>
+
+            <!-- Voltar -->
+
+            <Button
+                Text="VOLTAR"
+                Command="{Binding VoltarCommand}"
+                BackgroundColor="#333333"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                HeightRequest="50" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

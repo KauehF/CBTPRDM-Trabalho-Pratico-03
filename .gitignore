@@ -1,0 +1,108 @@
+# ==========================================
+# .NET / Visual Studio
+# ==========================================
+
+# Build
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# ==========================================
+# .NET / NuGet
+# ==========================================
+
+packages/
+*.nupkg
+*.snupkg
+
+# NuGet cache / generated files
+.nuget/
+
+# ==========================================
+# .NET MAUI
+# ==========================================
+
+# Generated MAUI files
+**/Platforms/Android/bin/
+**/Platforms/Android/obj/
+**/Platforms/iOS/bin/
+**/Platforms/iOS/obj/
+**/Platforms/MacCatalyst/bin/
+**/Platforms/MacCatalyst/obj/
+**/Platforms/Windows/bin/
+**/Platforms/Windows/obj/
+
+# ==========================================
+# Android
+# ==========================================
+
+# Android generated files
+**/Android/bin/
+**/Android/obj/
+
+# Android Studio / Gradle
+.gradle/
+**/build/
+captures/
+
+# Android local configuration
+local.properties
+
+# ==========================================
+# iOS / macOS
+# ==========================================
+
+# Xcode
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# ==========================================
+# macOS
+# ==========================================
+
+.DS_Store
+
+# ==========================================
+# Windows
+# ==========================================
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ==========================================
+# Logs / Temporary files
+# ==========================================
+
+*.log
+*.tmp
+*.temp
+
+# ==========================================
+# Certificates / Keys
+# ==========================================
+
+*.pfx
+*.p12
+*.key
+
+# ==========================================
+# User-specific / Local configuration
+# ==========================================
+
+*.userprefs
